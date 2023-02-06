@@ -1,0 +1,14 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: helveticaNeue;    
+}
+
+@font-face {
+    font-family: helveticaNeue;
+    src: url("./HelveticaNeue.ttc")
+}
+
+:root {
+    --black: #1A1A1A;
+}
