@@ -1,12 +1,12 @@
 * {
     margin: 0px;
     padding: 0px;
-    font-family: helveticaNeue;    
+    font-family: helveticaNeue;
 }
 
 @font-face {
     font-family: helveticaNeue;
-    src: url("./HelveticaNeue.ttc")
+    src: url("./assets/HelveticaNeue.ttc")
 }
 
 :root {

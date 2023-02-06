@@ -11,8 +11,10 @@ const StartPage = () => {
                 <img src={Logo} alt="logo" />
             </header>
             <div className="start-page content">
-                <button className="resume button">ᲠᲔᲖᲘᲣᲛᲔᲡ ᲓᲐᲛᲐᲢᲔᲑᲐ</button>
-                <img src={Logo2} alt="logo2"/>
+                <Link to="/info">
+                    <button className="resume button">ᲠᲔᲖᲘᲣᲛᲔᲡ ᲓᲐᲛᲐᲢᲔᲑᲐ</button>
+                </Link>
+                <img src={Logo2} alt="logo2" />
             </div>
         </div>
     )
