@@ -4,6 +4,7 @@
     font-family: helveticaNeue;
 }
 
+
 @font-face {
     font-family: helveticaNeue;
     src: url("./assets/HelveticaNeue.ttc")
@@ -15,4 +16,11 @@
     --grey: #BCBCBC;
     --blue: #0E80BF;
     --violet: #6B40E3;
+    --lightblue: #62A1EB;
+    --red: #EF5050;
+    --green: #98E37E;
+}
+
+button {
+    cursor: pointer;
 }

@@ -1,6 +1,6 @@
 .general-info.container {
     width: 1100px;
-    height: 100vh;
+    height: 1080px;
     background-color: var(--cream);
 
 }
@@ -25,6 +25,7 @@
     width: 40px;
     height: 40px;
     padding: 45px 0px 0px 45px;
+    cursor: pointer;
 }
 
 
@@ -39,6 +40,14 @@ form {
     padding: 69px 0px 0px 126px;
 }
 
+input:focus {
+    outline: none;
+}
+
+textarea:focus {
+    outline: none;
+}
+
 .input-wrapper {
     display: flex;
     flex-direction: column;
@@ -47,6 +56,7 @@ form {
     width: 419px;
     height: 122px;
     gap: 8px;
+    position: relative;
 
 }
 
@@ -56,6 +66,35 @@ form {
     border: 1px solid var(--grey);
     border-radius: 4px;
 }
+
+.input-wrapper>div>.error {
+    border: 1px solid var(--red);
+
+}
+
+.input-wrapper>div>.valid {
+    border: 1px solid var(--green);
+
+}
+
+.input-wrapper>.error {
+    border: 1px solid var(--red);
+
+
+}
+
+.input-wrapper>.valid {
+    border: 1px solid var(--green);
+
+}
+
+.input-wrapper.info>.valid,
+.input-wrapper.desc>.valid {
+    outline: 1px solid var(--green);
+
+}
+
+
 
 .input-wrapper label {
     width: 371px;
@@ -100,19 +139,37 @@ form {
 }
 
 
-#info-text {
+#info-text,
+#desc-text {
+    width: 766px;
+    height: 77px;
+    border: 1px solid var(--grey);
+    border-radius: 4px;
+    resize: none;
+    padding: 13px 16px;
+}
+
+#edu-desc-text {
     width: 798px;
-    height: 103px;
+    height: 179px;
 }
 
 
 .input-wrapper.info,
-.input-wrapper.contact {
+.input-wrapper.contact,
+.input-wrapper.work,
+.input-wrapper.uni {
     width: 846px;
 
 }
 
-.input-wrapper.contact {
+.input-wrapper.desc {
+    width: 798px;
+    margin: 0px 24px;
+}
+
+.input-wrapper.contact,
+.input-wrapper.work {
     padding-top: 20px;
 }
 
@@ -120,31 +177,126 @@ form {
     height: 148px;
 }
 
+
+
+.input-wrapper.desc {
+    height: 168px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--grey);
+}
+
 .input-wrapper #info-label,
 #mail-label,
-#phone-label {
+#phone-label,
+#title-label,
+#employee-label,
+#desc-label,
+#uni-label {
     width: 798px;
 }
 
-#info-text::placeholder {
-    transform: translateY(-35px);
-    padding-left: 16px;
+.input-wrapper #mail-labelvalid {
+    color: var(--green);
+    width: 798px;
+}
+
+.input-wrapper #mail-labelerror {
+    color: var(--red);
+    width: 798px;
+}
+
+.input-wrapper #mail-label-error {
+    color: var(--red);
+}
+
+input {
+    box-sizing: border-box;
+    padding: 16px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+}
+
+
+
+
+#info-text::placeholder,
+#desc-text::placeholder,
+#edu-desc-text::placeholder {
+    color: rgba(0, 0, 0, 0.6);
 }
 
 #mail-text,
-#phone-text {
+#phone-text,
+#title-text,
+#employee-text,
+#uni-text {
     width: 798px;
     height: 48px;
 }
 
-.input-wrapper.contact p {
+.input-wrapper.contact p,
+.input-wrapper.work p,
+.input-wrapper.uni p {
     width: 798px;
     font-weight: 300;
     font-size: 14px;
     line-height: 21px;
 }
 
-.page-toggle.button {
+#next-page-btn {
+    width: 151px;
+    height: 48px;
+    background: var(--violet);
+    border-radius: 4px;
+    border: none;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: white;
+    margin: 152px 0px 0px 797px;
+
+}
+
+
+input[type=date] {
+    padding: 0px 16px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    width: 339px;
+    color: rgba(0, 0, 0, 0.6);
+    width: 371px;
+    height: 48px;
+}
+
+#more-experience {
+    width: 289px;
+    height: 48px;
+    color: white;
+    background-color: var(--lightblue);
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+
+}
+
+.more-exp.wrapper {
+    margin: 50px 149px 0px 149px;
+  
+}
+
+.toggle-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 115px 150px 65px 150px;
+}
+
+.toggle-buttons button {
     width: 151px;
     height: 48px;
     background: var(--violet);
@@ -155,6 +307,32 @@ form {
     line-height: 20px;
     color: white;
 
-    margin: 152px 0px 0px 797px;
-    
+}
+
+
+.valid-icon,
+.error-icon {
+    width: 16.5px;
+    height: 16.5px;
+    position: absolute;
+    left: 365px;
+    top: 53px;
+}
+
+.valid-icon-outside,
+.error-icon-outside {
+    width: 16.5px;
+    height: 16.5px;
+    position: absolute;
+    left: 830px;
+    top: 72.5px;
+}
+
+.valid-icon-inside,
+.error-icon-inside {
+    width: 16.5px;
+    height: 16.5px;
+    position: absolute;
+    left: 790px;
+    top: 72.5px;
 }
