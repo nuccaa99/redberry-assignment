@@ -59,12 +59,12 @@ const Experience = () => {
 
     return (
         <div>
-            
+
             <form>
                 <div className="input-wrapper work">
                     <label id="title-label">თანამდებობა</label>
                     <div>
-                        <input type="text" name="mail" id="title-text" onChange={handleTitleChange} className={titleStyle} required />
+                        <input type="text" name="title" id="title-text" onChange={handleTitleChange} className={titleStyle} required />
                         {titleStyle === "valid" &&
                             <img src={valid} className="valid-icon-inside" alt="valid tick" />
                         }
@@ -76,7 +76,7 @@ const Experience = () => {
                 <div className="input-wrapper work">
                     <label id="employee-label">დამსაქმებელი</label>
                     <div>
-                        <input type="text" name="number" id="employee-text" onChange={handleEmpChange} className={empStyle} required />
+                        <input type="text" name="employee" id="employee-text" onChange={handleEmpChange} className={empStyle} required />
                         {empStyle === "valid" &&
                             <img src={valid} className="valid-icon-inside" alt="valid tick" />
                         }
@@ -102,7 +102,7 @@ const Experience = () => {
                 <div className="input-wrapper desc">
                     <label id="desc-label">აღწერა </label>
                     <textarea type="text" name="desc" placeholder="როლი თანამდებობაზე და ზოგადი აღწერა" id="desc-text"
-                        onChange={handleDescChange} className={descStyle} />
+                        onChange={handleDescChange} className={descStyle} required />
                 </div>
 
             </form>

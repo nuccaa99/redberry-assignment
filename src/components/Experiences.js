@@ -29,6 +29,7 @@ const Experiences = () => {
                 )
             })}
 
+
             <div className="more-exp wrapper">
                 <button id="more-experience" onClick={handleClick}>მეტი გამოცდილების დამატება</button>
             </div>
