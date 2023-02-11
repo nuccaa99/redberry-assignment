@@ -6,19 +6,25 @@ import "./Infos.css";
 import { Link } from "react-router-dom";
 import valid from "./assets/valid.png";
 import error from "./assets/error.png";
+import DegreeDropdown from "./DegreeDropdown";
 
 const Education = () => {
     const [uni, setUni] = useState("")
-    const [degree, setDegree] = useState("");
+    const [degree, setDegree] = useState("აირჩიეთ ხარისხი");
     const [endDate, setEndDate] = useState("");
     const [description, setDescription] = useState("");
+    const [dropDown, setDropDown] = useState("false");
 
     const [degrees, setDegrees] = useState([]);
 
     const [uniStyle, setUniStyle] = useState("")
-    const [degreeStyle, setDegreeStyle] = useState("");
+    const [degreeStyle, setDegreeStyle] = useState("plain");
     const [endDateStyle, setEndDateStyle] = useState("");
     const [descriptionStyle, setDescriptionStyle] = useState("");
+
+    const handleDropDown = () => {
+        setDropDown(!dropDown);
+    }
 
 
     const getData = async () => {
@@ -36,6 +42,27 @@ const Education = () => {
             setUniStyle("valid")
         } else {
             setUniStyle("error")
+        }
+    }
+
+    const handleDegreeChange = (degree) => {
+        setDegree(degree);
+        setDegreeStyle("valid");
+        setDropDown(!dropDown);
+
+    }
+
+    const handleEndDateChange = (e) => {
+        setEndDate(e.target.value);
+        setEndDateStyle("valid")
+    }
+
+    const handleDesciptionChange = (e) => {
+        setDescription(e.target.value);
+        if (e.target.value.length > 0) {
+            setDescriptionStyle("valid")
+        } else {
+            setDescriptionStyle("");
         }
     }
 
@@ -66,29 +93,37 @@ const Education = () => {
                 <div className="form-wrapper">
                     <div className="input-wrapper">
                         <label>ხარისხი </label>
-                        <select required defaultValue={'default'}>
-                            <option value="default" disabled>აირჩიეთ ხარისხი</option>
-
+                        {/* <select required defaultValue={'default'} onChange={handleDegreeChange} className={degreeStyle}>
+                            <option value="default" disabled hidden >აირჩიეთ ხარისხი</option>
                             {degrees.map((item) => {
                                 return (
                                     <option value={item.title} key={item.id}>{item.title}</option>
                                 )
 
                             })}
+                        </select> */}
+                        <DegreeDropdown
+                            handleChange={handleDegreeChange}
+                            class={degreeStyle}
+                            degree={degree}
+                            degreeList={degrees}
+                            handleOpening={handleDropDown}
+                            dropDown={dropDown} />
 
-                        </select>
                     </div>
 
                     <div className="input-wrapper">
                         <label>დამთავრების რიცხვი </label>
-                        <input type="date" name="ending-date" required />
+                        <input type="date" name="ending-date" required onChange={handleEndDateChange} className={endDateStyle} />
 
                     </div>
                 </div>
 
                 <div className="input-wrapper desc">
                     <label id="desc-label">აღწერა </label>
-                    <textarea type="text" name="desc" placeholder="განათლების აღწერა" id="edu-desc-text" required />
+                    <textarea type="text" name="desc" placeholder="განათლების აღწერა" id="edu-desc-text" required onChange={handleDesciptionChange}
+                        className={descriptionStyle}
+                    />
                 </div>
 
             </form>

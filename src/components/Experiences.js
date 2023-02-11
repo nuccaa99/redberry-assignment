@@ -11,7 +11,7 @@ const Experiences = () => {
     const handleClick = () => {
         setExps(oldArray => [...oldArray, 1]);
     }
-    console.log(exps)
+    
     return (
         <div className="general-info container">
             <header className="general-info header">

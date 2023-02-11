@@ -41,13 +41,6 @@ form {
     padding: 0px 0px 0px 126px;
 }
 
-input:focus,
-textarea:focus,
-select:focus {
-    outline: none;
-}
-
-
 
 .input-wrapper {
     display: flex;
@@ -61,13 +54,18 @@ select:focus {
 
 }
 
-.input-wrapper input,
-.input-wrapper select {
+.input-wrapper input {
     width: 371px;
     height: 48px;
     border: 1px solid var(--grey);
     border-radius: 4px;
 }
+
+
+
+
+
+
 
 .input-wrapper>div>.error {
     border: 1px solid var(--red);
@@ -87,6 +85,7 @@ select:focus {
 
 .input-wrapper>.valid {
     border: 1px solid var(--green);
+    color: black;
 
 }
 
@@ -277,6 +276,7 @@ input:not([type=file]) {
 
 
 input[type=date] {
+    cursor: pointer;
     padding: 0px 16px;
     font-weight: 400;
     font-size: 16px;
@@ -356,10 +356,4 @@ input[type=date] {
     position: absolute;
     left: 790px;
     top: 52.5px;
-}
-
-
-option[value=""][disabled] {
-    display: none;
-    color: rgba(0, 0, 0, 0.6);
 }
