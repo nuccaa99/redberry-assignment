@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Infos.css";
+import CV from "./CV";
 import arrowLeft from "./assets/arrowLeft.png";
 import valid from "./assets/valid.png";
 import error from "./assets/error.png";
@@ -80,6 +81,7 @@ const GeneralInfo = () => {
 
     return (
         <div className="general-info container">
+            <CV/>
             <header className="general-info header">
                 <Link to="/">
                     <img src={arrowLeft} alt="left arrow" id="arrow-left" />

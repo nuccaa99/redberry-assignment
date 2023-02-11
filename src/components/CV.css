@@ -1,0 +1,13 @@
+.cv-container {
+    width: 822px;
+    position: relative;
+    left: 1110px;
+
+}
+
+
+.cv-container img {
+    position: absolute;
+    top: 994px;
+    left:78px;
+}
