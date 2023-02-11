@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import "./Infos.css";
 import arrowLeft from "./assets/arrowLeft.png";
+import axios from "axios";
+import "./Infos.css";
+
 import { Link } from "react-router-dom";
 import valid from "./assets/valid.png";
 import error from "./assets/error.png";

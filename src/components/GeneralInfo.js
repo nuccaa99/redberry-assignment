@@ -15,7 +15,8 @@ const GeneralInfo = () => {
     const [phoneStyle, setPhoneStyle] = useState("")
     const [infoStyle, setInfoStyle] = useState("");
     const [nameStyle, setNameStyle] = useState("");
-    const [lastNameStyle, setLastNameStyle] = useState("")
+    const [lastNameStyle, setLastNameStyle] = useState("");
+    const [image, setImage] = useState();
 
     const handleNameChange = (e) => {
         setName(e.target.value);
@@ -70,6 +71,12 @@ const GeneralInfo = () => {
         }
 
     }
+    const hanleUpload = (e) => {
+        console.log(e.target.files);
+        setImage(URL.createObjectURL(e.target.files[0]));
+      
+    }
+
 
     return (
         <div className="general-info container">
@@ -112,7 +119,9 @@ const GeneralInfo = () => {
                 </div>
                 <div className="pic-wrapper">
                     <label>პირადი ფოტოს ატვირთვა</label>
-                    <button >ატვირთვა</button>
+                    <button >ატვირთვა
+                        <input type="file" onChange={hanleUpload} accept="image/png, image/jpeg"/>
+                    </button>
                 </div>
                 <div className="input-wrapper info">
                     <label id="info-label">ჩემ შესახებ (არასავალდებულო) </label>
@@ -149,7 +158,7 @@ const GeneralInfo = () => {
             </Link>
 
         </div >
-        
+
     )
 }
 

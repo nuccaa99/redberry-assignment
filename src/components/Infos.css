@@ -41,13 +41,13 @@ form {
     padding: 0px 0px 0px 126px;
 }
 
-input:focus {
+input:focus,
+textarea:focus,
+select:focus {
     outline: none;
 }
 
-textarea:focus {
-    outline: none;
-}
+
 
 .input-wrapper {
     display: flex;
@@ -61,7 +61,8 @@ textarea:focus {
 
 }
 
-.input-wrapper input, .input-wrapper select {
+.input-wrapper input,
+.input-wrapper select {
     width: 371px;
     height: 48px;
     border: 1px solid var(--grey);
@@ -135,8 +136,22 @@ textarea:focus {
     border-radius: 4px;
     font-weight: 400;
     font-size: 14px;
+    text-align: center;
     line-height: 17px;
     color: white;
+    position: relative;
+
+}
+
+.pic-wrapper input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    left: 2px;
+    bottom: 2px;
+    height: 100%;
+    width: 100%;
+    font-size: 0;
 }
 
 
@@ -210,7 +225,7 @@ textarea:focus {
     color: var(--red);
 }
 
-input {
+input:not([type=file]) {
     box-sizing: border-box;
     padding: 16px;
     font-weight: 400;
