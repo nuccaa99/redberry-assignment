@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import arrowLeft from "./assets/arrowLeft.png";
 import axios from "axios";
 import "./Infos.css";
@@ -13,10 +13,22 @@ const Education = () => {
     const [endDate, setEndDate] = useState("");
     const [description, setDescription] = useState("");
 
+    const [degrees, setDegrees] = useState([]);
+
     const [uniStyle, setUniStyle] = useState("")
     const [degreeStyle, setDegreeStyle] = useState("");
     const [endDateStyle, setEndDateStyle] = useState("");
     const [descriptionStyle, setDescriptionStyle] = useState("");
+
+
+    const getData = async () => {
+        const { data } = await axios.get(`https://resume.redberryinternship.ge/api/degrees`);
+        setDegrees(data);
+    };
+    useEffect(() => {
+        getData();
+    }, []);
+
 
     const handleUniChange = (e) => {
         setUni(e.target.value);
@@ -51,21 +63,19 @@ const Education = () => {
                     <p>მინიმუმ 2 სიმბოლო</p>
                 </div>
 
-
                 <div className="form-wrapper">
                     <div className="input-wrapper">
                         <label>ხარისხი </label>
-                        <select required>
-                            <option value="" selected>აირჩიეთ ხარისხი</option>
-                            <option value="grapefruit">საშუალო სკოლის დიპლომი</option>
-                            <option value="lime">ზოგადსაგანმანათლებლო დიპლომი</option>
-                            <option value="coconut">ბაკალავრი</option>
-                            <option value="mango">მაგისტრი</option>
-                            <option value="mango">დოქტორი</option>
-                            <option value="mango">ასოცირებული ხარისხი</option>
-                            <option value="mango">სტუდენტი</option>
-                            <option value="mango">კოლეჯი (ხარისხის გარეშე)</option>
-                            <option value="mango">სხვა</option>
+                        <select required defaultValue={'default'}>
+                            <option value="default" disabled>აირჩიეთ ხარისხი</option>
+
+                            {degrees.map((item) => {
+                                return (
+                                    <option value={item.title} key={item.id}>{item.title}</option>
+                                )
+
+                            })}
+
                         </select>
                     </div>
 
