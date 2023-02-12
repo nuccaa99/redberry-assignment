@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Infos.css";
+import CV from "./CV";
 
 import valid from "./assets/valid.png";
 import error from "./assets/error.png";

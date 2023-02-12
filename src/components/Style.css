@@ -16,15 +16,24 @@
     --black: #1A1A1A;
     --cream: #F9F9F9;
     --grey: #BCBCBC;
+    --lightergrey: #C8C8C8;
     --blue: #0E80BF;
     --violet: #6B40E3;
     --lightblue: #62A1EB;
     --red: #EF5050;
+    --orangyred: #F93B1D;
     --green: #98E37E;
+    --blacklight: #2E2E2E;
 }
 
 button {
     cursor: pointer;
-    
+
 }
 
+
+.page-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}

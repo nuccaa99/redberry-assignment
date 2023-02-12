@@ -12,6 +12,7 @@ const GeneralInfo = () => {
     const [info, setInfo] = useState("");
     const [mail, setMail] = useState("");
     const [phone, setPhone] = useState("");
+
     const [mailStyle, setMailStyle] = useState("");
     const [phoneStyle, setPhoneStyle] = useState("")
     const [infoStyle, setInfoStyle] = useState("");
@@ -73,94 +74,97 @@ const GeneralInfo = () => {
 
     }
     const hanleUpload = (e) => {
-        console.log(e.target.files);
+
         setImage(URL.createObjectURL(e.target.files[0]));
-      
+
     }
 
 
     return (
-        <div className="general-info container">
-            <CV/>
-            <header className="general-info header">
-                <Link to="/">
-                    <img src={arrowLeft} alt="left arrow" id="arrow-left" />
+        <div className="page-container">
+            <div className="general-info container">
+
+                <header className="general-info header">
+                    <Link to="/">
+                        <img src={arrowLeft} alt="left arrow" id="arrow-left" />
+                    </Link>
+                    <div className="header-wrapper">
+                        <h1 className="header-text">ᲞᲘᲠᲐᲓᲘ ᲘᲜᲤᲝ</h1>
+                        <p>1/3</p>
+                    </div>
+                </header>
+                <form>
+                    <div className="form-wrapper">
+                        <div className="input-wrapper">
+                            <label>სახელი </label>
+                            <div>
+                                <input type="text" name="name" onChange={handleNameChange} className={nameStyle} required />
+                                {nameStyle === "valid" &&
+                                    <img src={valid} className="valid-icon" alt="valid tick" />
+                                }
+                                {nameStyle === "error" &&
+                                    <img src={error} className="error-icon" alt="error tick" />}
+                            </div>
+                            <p>მინიმუმ 2 ასო, ქართული ასოები</p>
+                        </div>
+                        <div className="input-wrapper">
+                            <label>გვარი </label>
+                            <div>
+                                <input type="text" name="lastname" onChange={handleLastNameChange} className={lastNameStyle} required />
+                                {lastNameStyle === "valid" &&
+                                    <img src={valid} className="valid-icon" alt="valid tick" />
+                                }
+                                {lastNameStyle === "error" &&
+                                    <img src={error} className="error-icon" alt="error tick" />}
+                            </div>
+                            <p>მინიმუმ 2 ასო, ქართული ასოები</p>
+
+                        </div>
+                    </div>
+                    <div className="pic-wrapper">
+                        <label>პირადი ფოტოს ატვირთვა</label>
+                        <button >ატვირთვა
+                            <input type="file" onChange={hanleUpload} accept="image/png, image/jpeg" />
+                        </button>
+                    </div>
+                    <div className="input-wrapper info">
+                        <label id="info-label">ჩემ შესახებ (არასავალდებულო) </label>
+                        <textarea type="text" name="info" placeholder="ზოგადი ინფო შენ შესახებ" id="info-text"
+                            onChange={handleInfoChange} className={infoStyle} />
+                    </div>
+                    <div className="input-wrapper contact">
+                        <label id={`mail-label${mailStyle}`} >ელ.ფოსტა</label>
+                        <div>
+                            <input type="email" name="mail" id="mail-text" required
+                                onChange={handleMailChange} className={mailStyle} />
+                            {mailStyle === "valid" &&
+                                <img src={valid} className="valid-icon-outside" alt="valid tick" />}
+                            {mailStyle === "error" &&
+                                <img src={error} className="error-icon-outside" alt="error tick" />}
+                        </div>
+                        <p>უნდა მთავრდებოდეს @redberry.ge-ით</p>
+                    </div>
+                    <div className="input-wrapper contact">
+                        <label id="phone-label">მობილურის ნომერი</label>
+                        <div>
+                            <input type="text" name="number" id="phone-text"
+                                onChange={handlePhoneChange} className={phoneStyle} />
+                            {phoneStyle === "valid" &&
+                                <img src={valid} alt="valid tick" className="info valid-icon-inside" />}
+                            {phoneStyle === "error" &&
+                                <img src={error} alt="error tick" className="info error-icon-inside" />}
+                        </div>
+                        <p>უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს</p>
+                    </div>
+                </form >
+                <Link to="/experience">
+                    <button type="sumbit" id="next-page-btn">ᲨᲔᲛᲓᲔᲒᲘ</button>
                 </Link>
-                <div className="header-wrapper">
-                    <h1 className="header-text">ᲞᲘᲠᲐᲓᲘ ᲘᲜᲤᲝ</h1>
-                    <p>1/3</p>
-                </div>
-            </header>
-            <form>
-                <div className="form-wrapper">
-                    <div className="input-wrapper">
-                        <label>სახელი </label>
-                        <div>
-                            <input type="text" name="name" onChange={handleNameChange} className={nameStyle} required />
-                            {nameStyle === "valid" &&
-                                <img src={valid} className="valid-icon" alt="valid tick" />
-                            }
-                            {nameStyle === "error" &&
-                                <img src={error} className="error-icon" alt="error tick" />}
-                        </div>
-                        <p>მინიმუმ 2 ასო, ქართული ასოები</p>
-                    </div>
-                    <div className="input-wrapper">
-                        <label>გვარი </label>
-                        <div>
-                            <input type="text" name="lastname" onChange={handleLastNameChange} className={lastNameStyle} required />
-                            {lastNameStyle === "valid" &&
-                                <img src={valid} className="valid-icon" alt="valid tick" />
-                            }
-                            {lastNameStyle === "error" &&
-                                <img src={error} className="error-icon" alt="error tick" />}
-                        </div>
-                        <p>მინიმუმ 2 ასო, ქართული ასოები</p>
 
-                    </div>
-                </div>
-                <div className="pic-wrapper">
-                    <label>პირადი ფოტოს ატვირთვა</label>
-                    <button >ატვირთვა
-                        <input type="file" onChange={hanleUpload} accept="image/png, image/jpeg"/>
-                    </button>
-                </div>
-                <div className="input-wrapper info">
-                    <label id="info-label">ჩემ შესახებ (არასავალდებულო) </label>
-                    <textarea type="text" name="info" placeholder="ზოგადი ინფო შენ შესახებ" id="info-text"
-                        onChange={handleInfoChange} className={infoStyle} />
-                </div>
-                <div className="input-wrapper contact">
-                    <label id={`mail-label${mailStyle}`} >ელ.ფოსტა</label>
-                    <div>
-                        <input type="email" name="mail" id="mail-text" required
-                            onChange={handleMailChange} className={mailStyle} />
-                        {mailStyle === "valid" &&
-                            <img src={valid} className="valid-icon-outside" alt="valid tick" />}
-                        {mailStyle === "error" &&
-                            <img src={error} className="error-icon-outside" alt="error tick" />}
-                    </div>
-                    <p>უნდა მთავრდებოდეს @redberry.ge-ით</p>
-                </div>
-                <div className="input-wrapper contact">
-                    <label id="phone-label">მობილურის ნომერი</label>
-                    <div>
-                        <input type="text" name="number" id="phone-text"
-                            onChange={handlePhoneChange} className={phoneStyle} />
-                        {phoneStyle === "valid" &&
-                            <img src={valid} alt="valid tick" className="valid-icon-inside" />}
-                        {phoneStyle === "error" &&
-                            <img src={error} alt="error tick" className="error-icon-inside" />}
-                    </div>
-                    <p>უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს</p>
-                </div>
-            </form >
-            <Link to="/experience">
-                <button type="sumbit" id="next-page-btn">ᲨᲔᲛᲓᲔᲒᲘ</button>
-            </Link>
+            </div >
 
-        </div >
-
+            <CV name={name} lastname={lastName} info={info} mail={mail} phone={phone} image={image} />
+        </div>
     )
 }
 

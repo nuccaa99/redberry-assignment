@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import arrowLeft from "./assets/arrowLeft.png";
 import axios from "axios";
 import "./Infos.css";
+import CV from "./CV";
 
 import { Link } from "react-router-dom";
 import valid from "./assets/valid.png";
@@ -68,6 +69,7 @@ const Education = () => {
 
     return (
         <div className="general-info container">
+            <CV/>
             <header className="general-info header">
                 <img src={arrowLeft} alt="left arrow" id="arrow-left" />
                 <div className="header-wrapper">
@@ -104,7 +106,7 @@ const Education = () => {
                         </select> */}
                         <DegreeDropdown
                             handleChange={handleDegreeChange}
-                            class={degreeStyle}
+                            classname={degreeStyle}
                             degree={degree}
                             degreeList={degrees}
                             handleOpening={handleDropDown}

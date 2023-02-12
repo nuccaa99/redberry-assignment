@@ -2,11 +2,10 @@ import React from "react";
 import "./DegreeDropdown.css";
 import downArrow from "./assets/downarrow.png";
 
-const DegreeDropdown = (props) => {
-    console.log(props)
-    const renderedOptions = props.degreeList.map((item) => {
+const DegreeDropdown = ({ handleChange, classname, degree, degreeList, handleOpening, dropDown }) => {
+    const renderedOptions = degreeList.map((item) => {
         return (
-            <div key={item.id} className="dropdown-menu-item" onClick={() => { props.handleChange(item.title) }}>
+            <div key={item.id} className="dropdown-menu-item" onClick={() => { handleChange(item.title) }}>
                 {item.title}
             </div>
         )
@@ -14,11 +13,11 @@ const DegreeDropdown = (props) => {
 
     return (
         <div>
-            <div className={`dropdown-wrapper  ${props.class}`} onClick={props.handleOpening} >
-                <div className="degree-input"> {props.degree}</div>
+            <div className={`dropdown-wrapper  ${classname}`} onClick={handleOpening} >
+                <div className="degree-input"> {degree}</div>
                 <img src={downArrow} alt="dropdown arrow" />
             </div>
-            <div className={`dropdown-menu ${!props.dropDown ? "" : "hidden"}`}>{renderedOptions}</div>
+            <div className={`dropdown-menu ${!dropDown ? "" : "hidden"}`}>{renderedOptions}</div>
         </div>
     )
 }
