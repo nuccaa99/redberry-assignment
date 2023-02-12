@@ -62,7 +62,9 @@
     padding-bottom: 19px;
 }
 
-.info-header {
+.info-header,
+.exp-header,
+.edu-header {
     font-weight: 700;
     font-size: 18px;
     line-height: 22px;
@@ -75,5 +77,40 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 22px;
+    overflow-wrap: break-word;
+}
+
+/* გამოცდილება */
+
+.exp-sector,
+.edu-sector {
+    padding-top: 24px;
+    border-top: 1px solid var(--lightergrey);
+}
+
+.job-title,
+.uni-title {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--black);
+}
+
+.dates {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #919191;
+    padding: 7px 0px 16px 0;
+
+}
+
+.exp-desc,
+.edu-desc {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    width: 662px;
     overflow-wrap: break-word;
 }

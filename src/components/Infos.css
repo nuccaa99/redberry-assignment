@@ -173,6 +173,9 @@ form {
     height: 179px;
 }
 
+#desc-text {
+    height: 97px;
+}
 
 .input-wrapper.info,
 .input-wrapper.contact,

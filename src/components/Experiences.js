@@ -7,10 +7,62 @@ import Experience from "./Experience";
 
 
 const Experiences = () => {
+
+
+    const [title, setTitle] = useState("");
+    const [emp, setEmp] = useState("");
+    const [stDate, setStDate] = useState("");
+    const [enDate, setEnDate] = useState("");
+    const [desc, setDesc] = useState("");
+    const [titleStyle, setTitleStyle] = useState("");
+    const [empStyle, setEmpStyle] = useState("");
+    const [stDateStyle, setStDateStyle] = useState("");
+    const [enDateStyle, setEnDateStyle] = useState("");
+    const [descStyle, setDescStyle] = useState("");
+
+
     const [exps, setExps] = useState([1]);
+
 
     const handleClick = () => {
         setExps(oldArray => [...oldArray, 1]);
+    }
+
+    const handleTitleChange = (e) => {
+        setTitle(e.target.value);
+        if (e.target.value.length >= 2) {
+            setTitleStyle("valid")
+        } else {
+            setTitleStyle("error")
+        }
+    }
+
+    const handleEmpChange = (e) => {
+        setEmp(e.target.value);
+        if (e.target.value.length >= 2) {
+            setEmpStyle("valid")
+        } else {
+            setEmpStyle("error")
+        }
+    }
+
+    const handleStDateChange = (e) => {
+        setStDate(e.target.value);
+        setStDateStyle("valid")
+    }
+
+    const handleEnDateChange = (e) => {
+        setEnDate(e.target.value);
+        setEnDateStyle("valid")
+    }
+
+    const handleDescChange = (e) => {
+        setDesc(e.target.value);
+        if (e.target.value.length > 0) {
+            setDescStyle("valid")
+        } else {
+            setDescStyle("");
+        }
     }
 
     return (
@@ -28,7 +80,16 @@ const Experiences = () => {
                 </header>
                 {exps.map((item) => {
                     return (
-                        <Experience />
+                        <Experience title={title} emp={emp} stDate={stDate}
+                            enDate={enDate} desc={desc}
+                            titleStyle={titleStyle} empStyle={empStyle}
+                            stDateStyle={stDateStyle} enDateStyle={enDateStyle}
+                            descStyle={descStyle}
+                            handleTitleChange={handleTitleChange}
+                            handleEmpChange={handleEmpChange}
+                            handleStDateChange={handleStDateChange}
+                            handleEnDateChange={handleEnDateChange}
+                            handleDescChange={handleDescChange} />
                     )
                 })}
 
@@ -46,7 +107,8 @@ const Experiences = () => {
                 </div>
 
             </div>
-            <CV />
+            <CV title={title} emp={emp} stDate={stDate}
+                enDate={enDate} desc={desc} />
         </div>
     )
 }

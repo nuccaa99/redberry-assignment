@@ -68,78 +68,72 @@ const Education = () => {
     }
 
     return (
-        <div className="general-info container">
-            <CV/>
-            <header className="general-info header">
-                <img src={arrowLeft} alt="left arrow" id="arrow-left" />
-                <div className="header-wrapper">
-                    <h1 className="header-text">ᲒᲐᲜᲐᲗᲚᲔᲑᲐ</h1>
-                    <p>3/3</p>
-                </div>
-            </header>
-            <form>
-                <div className="input-wrapper uni">
-                    <label id="uni-label">სასწავლებელი</label>
-                    <div>
-                        <input type="text" name="uni" id="uni-text" required
-                            onChange={handleUniChange} className={uniStyle} />
-                        {uniStyle === "valid" &&
-                            <img src={valid} className="valid-icon-inside" alt="valid tick" />
-                        }
-                        {uniStyle === "error" &&
-                            <img src={error} className="error-icon-inside" alt="error tick" />}
+        <div className="page-container">
+            <div className="general-info container">
+                <header className="general-info header">
+                    <img src={arrowLeft} alt="left arrow" id="arrow-left" />
+                    <div className="header-wrapper">
+                        <h1 className="header-text">ᲒᲐᲜᲐᲗᲚᲔᲑᲐ</h1>
+                        <p>3/3</p>
                     </div>
-                    <p>მინიმუმ 2 სიმბოლო</p>
-                </div>
-
-                <div className="form-wrapper">
-                    <div className="input-wrapper">
-                        <label>ხარისხი </label>
-                        {/* <select required defaultValue={'default'} onChange={handleDegreeChange} className={degreeStyle}>
-                            <option value="default" disabled hidden >აირჩიეთ ხარისხი</option>
-                            {degrees.map((item) => {
-                                return (
-                                    <option value={item.title} key={item.id}>{item.title}</option>
-                                )
-
-                            })}
-                        </select> */}
-                        <DegreeDropdown
-                            handleChange={handleDegreeChange}
-                            classname={degreeStyle}
-                            degree={degree}
-                            degreeList={degrees}
-                            handleOpening={handleDropDown}
-                            dropDown={dropDown} />
-
+                </header>
+                <form>
+                    <div className="input-wrapper uni">
+                        <label id="uni-label">სასწავლებელი</label>
+                        <div>
+                            <input type="text" name="uni" id="uni-text" required
+                                onChange={handleUniChange} className={uniStyle} />
+                            {uniStyle === "valid" &&
+                                <img src={valid} className="valid-icon-inside" alt="valid tick" />
+                            }
+                            {uniStyle === "error" &&
+                                <img src={error} className="error-icon-inside" alt="error tick" />}
+                        </div>
+                        <p>მინიმუმ 2 სიმბოლო</p>
                     </div>
 
-                    <div className="input-wrapper">
-                        <label>დამთავრების რიცხვი </label>
-                        <input type="date" name="ending-date" required onChange={handleEndDateChange} className={endDateStyle} />
+                    <div className="form-wrapper">
+                        <div className="input-wrapper">
+                            <label>ხარისხი </label>
 
+                            <DegreeDropdown
+                                handleChange={handleDegreeChange}
+                                classname={degreeStyle}
+                                degree={degree}
+                                degreeList={degrees}
+                                handleOpening={handleDropDown}
+                                dropDown={dropDown} />
+
+                        </div>
+
+                        <div className="input-wrapper">
+                            <label>დამთავრების რიცხვი </label>
+                            <input type="date" name="ending-date" required onChange={handleEndDateChange} className={endDateStyle} />
+
+                        </div>
                     </div>
-                </div>
 
-                <div className="input-wrapper desc">
-                    <label id="desc-label">აღწერა </label>
-                    <textarea type="text" name="desc" placeholder="განათლების აღწერა" id="edu-desc-text" required onChange={handleDesciptionChange}
-                        className={descriptionStyle}
-                    />
-                </div>
+                    <div className="input-wrapper desc">
+                        <label id="desc-label">აღწერა </label>
+                        <textarea type="text" name="desc" placeholder="განათლების აღწერა" id="edu-desc-text" required onChange={handleDesciptionChange}
+                            className={descriptionStyle}
+                        />
+                    </div>
 
-            </form>
-            <div className="more-exp wrapper">
-                <button id="more-experience">სხვა სასწავლებლის დამატება</button>
+                </form>
+                <div className="more-exp wrapper">
+                    <button id="more-experience">სხვა სასწავლებლის დამატება</button>
+                </div>
+                <div className="toggle-buttons edu">
+                    <Link to="/experience">
+                        <button type="sumbit" >ᲣᲙᲐᲜ</button>
+                    </Link>
+                    <Link to="/">
+                        <button type="sumbit" >ᲓᲐᲡᲠᲣᲚᲔᲑᲐ</button>
+                    </Link>
+                </div>
             </div>
-            <div className="toggle-buttons edu">
-                <Link to="/experience">
-                    <button type="sumbit" >ᲣᲙᲐᲜ</button>
-                </Link>
-                <Link to="/">
-                    <button type="sumbit" >ᲓᲐᲡᲠᲣᲚᲔᲑᲐ</button>
-                </Link>
-            </div>
+            <CV uni={uni} degree={degree} endDate={endDate} description={description} />
         </div>
     )
 }

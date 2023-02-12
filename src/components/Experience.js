@@ -6,57 +6,17 @@ import valid from "./assets/valid.png";
 import error from "./assets/error.png";
 
 
-const Experience = () => {
-    const [title, setTitle] = useState("");
-    const [emp, setEmp] = useState("");
-    const [stDate, setStDate] = useState("");
-    const [enDate, setEnDate] = useState("");
-    const [desc, setDesc] = useState("");
-    const [titleStyle, setTitleStyle] = useState("");
-    const [empStyle, setEmpStyle] = useState("");
-    const [stDateStyle, setStDateStyle] = useState("");
-    const [enDateStyle, setEnDateStyle] = useState("");
-    const [descStyle, setDescStyle] = useState("");
-
-
-
-    const handleTitleChange = (e) => {
-        setTitle(e.target.value);
-        if (e.target.value.length >= 2) {
-            setTitleStyle("valid")
-        } else {
-            setTitleStyle("error")
-        }
-    }
-
-    const handleEmpChange = (e) => {
-        setEmp(e.target.value);
-        if (e.target.value.length >= 2) {
-            setEmpStyle("valid")
-        } else {
-            setEmpStyle("error")
-        }
-    }
-
-    const handleStDateChange = (e) => {
-        setStDate(e.target.value);
-        setStDateStyle("valid")
-    }
-
-    const handleEnDateChange = (e) => {
-        setEnDate(e.target.value);
-        setEnDateStyle("valid")
-    }
-
-    const handleDescChange = (e) => {
-        setDesc(e.target.value);
-        if (e.target.value.length > 0) {
-            setDescStyle("valid")
-        } else {
-            setDescStyle("");
-        }
-    }
-
+const Experience = ({
+    title, emp, stDate, enDate, desc,
+    titleStyle, empStyle,
+    stDateStyle, enDateStyle,
+    descStyle,
+    handleTitleChange,
+    handleEmpChange,
+    handleStDateChange,
+    handleEnDateChange,
+    handleDescChange
+}) => {
 
     return (
         <div>
