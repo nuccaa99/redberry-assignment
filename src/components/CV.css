@@ -85,6 +85,7 @@
 .exp-sector,
 .edu-sector {
     padding-top: 24px;
+    padding-bottom: 24px;
     border-top: 1px solid var(--lightergrey);
 }
 

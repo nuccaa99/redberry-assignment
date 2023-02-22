@@ -109,6 +109,7 @@ form {
     font-weight: 300;
     font-size: 14px;
     line-height: 21px;
+    color: var(--blacklight);
 }
 
 
@@ -264,6 +265,7 @@ input:not([type=file]) {
     font-weight: 300;
     font-size: 14px;
     line-height: 21px;
+    color: var(--blacklight);
 }
 
 #next-page-btn {
@@ -372,4 +374,9 @@ input[type=date] {
     position: absolute;
     left: 790px;
     top: 72.5px;
+}
+
+.non-clickable {
+    pointer-events: none;
+    cursor: not-allowed;
 }

@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Infos.css";
-import CV from "./CV";
 import { Link } from "react-router-dom";
 import arrowLeft from "./assets/arrowLeft.png";
 import Experience from "./Experience";
 
 
-const Experiences = () => {
-
+const Experiences = (props) => {
 
     const [title, setTitle] = useState("");
     const [emp, setEmp] = useState("");
@@ -20,25 +18,50 @@ const Experiences = () => {
     const [enDateStyle, setEnDateStyle] = useState("");
     const [descStyle, setDescStyle] = useState("");
 
+    const [expInfo, setExpInfo] = useState({
+        title: props.storageData[0].title, emp: props.storageData[0].emp,
+        stDate: props.storageData[0].stDate, enDate: props.storageData[0].enDate, desc: props.storageData[0].desc
+    });
 
-    const [exps, setExps] = useState([1]);
+    useEffect(() => {
+        let updated = {};
+        updated = { experience: [expInfo] };
+        props.setData(data => ({
+            ...data,
+            ...updated
+        }));
+    }, [expInfo]);
 
-
-    const handleClick = () => {
-        setExps(oldArray => [...oldArray, 1]);
-    }
 
     const handleTitleChange = (e) => {
         setTitle(e.target.value);
+
+        let updatedValue = {};
+        updatedValue = { title: e.target.value };
+        setExpInfo(expInfo => ({
+            ...expInfo,
+            ...updatedValue
+        }));
+
         if (e.target.value.length >= 2) {
-            setTitleStyle("valid")
+            setTitleStyle("valid");
         } else {
             setTitleStyle("error")
         }
+
+
     }
 
     const handleEmpChange = (e) => {
         setEmp(e.target.value);
+
+        let updatedValue = {};
+        updatedValue = { emp: e.target.value };
+        setExpInfo(expInfo => ({
+            ...expInfo,
+            ...updatedValue
+        }));
+
         if (e.target.value.length >= 2) {
             setEmpStyle("valid")
         } else {
@@ -48,16 +71,34 @@ const Experiences = () => {
 
     const handleStDateChange = (e) => {
         setStDate(e.target.value);
+        let updatedValue = {};
+        updatedValue = { stDate: e.target.value };
+        setExpInfo(expInfo => ({
+            ...expInfo,
+            ...updatedValue
+        }));
         setStDateStyle("valid")
     }
 
     const handleEnDateChange = (e) => {
         setEnDate(e.target.value);
+        let updatedValue = {};
+        updatedValue = { enDate: e.target.value };
+        setExpInfo(expInfo => ({
+            ...expInfo,
+            ...updatedValue
+        }));
         setEnDateStyle("valid")
     }
 
     const handleDescChange = (e) => {
         setDesc(e.target.value);
+        let updatedValue = {};
+        updatedValue = { desc: e.target.value };
+        setExpInfo(expInfo => ({
+            ...expInfo,
+            ...updatedValue
+        }));
         if (e.target.value.length > 0) {
             setDescStyle("valid")
         } else {
@@ -78,24 +119,24 @@ const Experiences = () => {
                         <p>2/3</p>
                     </div>
                 </header>
-                {exps.map((item) => {
-                    return (
-                        <Experience title={title} emp={emp} stDate={stDate}
-                            enDate={enDate} desc={desc}
-                            titleStyle={titleStyle} empStyle={empStyle}
-                            stDateStyle={stDateStyle} enDateStyle={enDateStyle}
-                            descStyle={descStyle}
-                            handleTitleChange={handleTitleChange}
-                            handleEmpChange={handleEmpChange}
-                            handleStDateChange={handleStDateChange}
-                            handleEnDateChange={handleEnDateChange}
-                            handleDescChange={handleDescChange} />
-                    )
-                })}
+                <Experience
+                    data={expInfo}
+                    title={title} emp={emp} stDate={stDate}
+                    enDate={enDate} desc={desc}
+                    titleStyle={titleStyle} empStyle={empStyle}
+                    stDateStyle={stDateStyle} enDateStyle={enDateStyle}
+                    descStyle={descStyle}
+                    handleTitleChange={handleTitleChange}
+                    handleEmpChange={handleEmpChange}
+                    handleStDateChange={handleStDateChange}
+                    handleEnDateChange={handleEnDateChange}
+                    handleDescChange={handleDescChange}
+
+                />
 
 
                 <div className="more-exp wrapper">
-                    <button id="more-experience" onClick={handleClick}>მეტი გამოცდილების დამატება</button>
+                    <button id="more-experience">მეტი გამოცდილების დამატება</button>
                 </div>
                 <div className="toggle-buttons">
                     <Link to="/info">
@@ -107,8 +148,8 @@ const Experiences = () => {
                 </div>
 
             </div>
-            <CV title={title} emp={emp} stDate={stDate}
-                enDate={enDate} desc={desc} />
+
+
         </div>
     )
 }
